@@ -3,6 +3,7 @@ var router = express.Router();
 
 
 const productsModel = require('../models/products');
+const citiesModel = require('../models/cities');
 
 
 /* GET home page. */
@@ -10,7 +11,60 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/**
+ * @description Route add Cities = add a new city tag
+ * @methode POST
+ */
+ router.post('/addCities', async (req, res, next) => {   
+  //Validate request
+  if(req.body.cityName == ""){
+    res.status(400).json({message: "Entrer un nom de ville"});
+  }else{
+  //create new Product
+  const city = new citiesModel ({
+    cityName: req.body.cityName,
+    
+  });
+  const citySaved = await city.save()
+  console.log('CITY saved venant du backend', citySaved)
+  
+  res.json({message: "The city has been saved", citySaved })
+}
+});
 
+/**
+ * @description Display cityTags
+ * @methode GET
+ */
+ router.get('/cities', async (req, res, next) => { 
+  citiesModel.find()
+    .then(cities => res.status(200).json(cities))
+    .catch(error => res.status(400).json({ error }));
+ })
+
+ /**
+ * @description Remove cityTags
+ * @methode DELETE
+ */
+ 
+ router.delete('/delete/:cityName',(req, res, next) => {
+  /* productsModel.deleteOne({_id : req.params.id})
+  .then(products => res.status(200).json({message: "objet supprimé"}))
+  .catch(error => res.status(400).json({ error }));
+  console.log("req params", returnDB) */
+
+  const cityName = req.params.cityName;
+  citiesModel.findOneAndDelete(cityName)
+  .then(products => { 
+    if(!products){
+      res.status(404).json({message: `No product with ${prodRef} to delete`})
+    }else{
+      console.log(products);
+      res.status(200).json({message: "Product has been successfully deleted!"})
+    }
+})
+
+})
 
 
 /**

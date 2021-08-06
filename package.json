@@ -17,5 +17,8 @@
     "http-errors": "~1.6.3",
     "mongoose": "^5.13.4",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "react-test-renderer": "^17.0.2"
   }
 }
