@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
   const citySaved = await city.save()
   console.log('CITY saved venant du backend', citySaved)
   
-  res.json({message: "The city has been saved", citySaved })
+  res.json({citySaved} )
 }
 });
 
@@ -55,12 +55,12 @@ router.get('/', function(req, res, next) {
 
   const cityName = req.params.cityName;
   citiesModel.findOneAndDelete(cityName)
-  .then(products => { 
-    if(!products){
-      res.status(404).json({message: `No product with ${prodRef} to delete`})
+  .then(cityName => { 
+    if(!cityName){
+      res.status(404).json({message: `No city with ${cityName} to delete`})
     }else{
-      console.log(products);
-      res.status(200).json({message: "Product has been successfully deleted!"})
+      console.log(cityName);
+      res.status(200).json({message: "City has been successfully deleted!"})
     }
 })
 
@@ -138,13 +138,13 @@ router.delete('/delete/:prodRef',(req, res, next) => {
   .catch(error => res.status(400).json({ error }));
   console.log("req params", returnDB) */
 
-  const prodRef = req.params.prodRef;
+  const prodRef = req.body.prodRef;
   productsModel.findOneAndDelete(prodRef)
-  .then(products => { 
-    if(!products){
+  .then(prodRef => { 
+    if(!prodRef){
       res.status(404).json({message: `No product with ${prodRef} to delete`})
     }else{
-      console.log(products);
+      console.log(prodRef);
       res.status(200).json({message: "Product has been successfully deleted!"})
     }
 })
