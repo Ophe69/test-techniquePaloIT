@@ -6,13 +6,8 @@ const productsModel = require('../models/products');
 const citiesModel = require('../models/cities');
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
 /**
- * @description Route add Cities = add a new city tag
+ * @description Route to add a new city tag
  * @methode POST
  */
  router.post('/addCities', async (req, res, next) => {   
@@ -65,7 +60,7 @@ router.get('/cities', async (req, res, next) => {
 
 
 /**
- * @description Route add Products = add a new products
+ * @description Route to add a new product
  * @methode POST
  */
 router.post('/addProducts', async (req, res, next) => {   
@@ -81,14 +76,13 @@ router.post('/addProducts', async (req, res, next) => {
     prodPrice: req.body.prodPrice
   });
   const productSaved = await product.save()
-  console.log('product saved venant du backend', productSaved)
   
   res.json({message: "The product has been saved", productSaved })
 }
 });
 
 /**
- * @description Route to display products
+ * @description Route to display the list of products
  * @methode GET/ 
  */
 
@@ -100,7 +94,7 @@ router.get('/products', (req, res, next) => {
 
 
 /**
- * @description Route to update product
+ * @description Route to update product collecting prodRef in props
  * @methode PUT/ 
  */
 router.put('/update/:prodRef', (req, res, next) => {
@@ -111,7 +105,6 @@ router.put('/update/:prodRef', (req, res, next) => {
       if(!products){
         res.status(404).json({message: `Cannot update product with ${prodRef}`})
       }else{
-        console.log(products);
         res.status(200).json(products)
       }
   })
@@ -120,12 +113,12 @@ router.put('/update/:prodRef', (req, res, next) => {
 
 
 /**
- * @description Delete a product with specified id
+ * @description Delete a product with specified prodRef
  * @methode DELETE/ 
  */
 
 router.delete('/delete/:prodRef', function (req, res, next) {
-
+  
   const prodRef = req.params.prodRef;
   productsModel.deleteOne({prodRef}, function (err, response){
     if(err){
@@ -134,33 +127,8 @@ router.delete('/delete/:prodRef', function (req, res, next) {
       res.json({status: 200, response})
     }
   })
-  
-  /* .then(prodRef => { 
-    if(!prodRef){
-      res.status(404).json({message: `No product with ${prodRef} to delete`})
-    }else{
-      console.log(prodRef);
-      res.status(200).json({message: "Product has been successfully deleted!"})
-    }
-}) */
 
 })
-
-/*
- router.delete('/delete/:cityName',(req, res, next) => {
-
-  const cityName = req.params.cityName;
-  citiesModel.deleteOne({cityName}, function (err, response){
-    if(err){
-      res.send(err);
-    }else{
-      res.json({status: 200, response})
-    }
-  })
-    
-
-})
- */
 
 
 module.exports = router;
