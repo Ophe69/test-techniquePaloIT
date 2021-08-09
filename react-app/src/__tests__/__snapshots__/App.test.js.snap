@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My first snapshot test testing app button 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="zone1"
+  >
+     
+    <input
+      className="input-city-tag"
+      onChange={[Function]}
+      onKeyUp={[Function]}
+      placeholder="Press enter to add city"
+      type="text"
+      value=""
+    />
+    <button
+      aria-label={null}
+      className="btn btn-secondary"
+      id="btn-city-tag"
+      onClick={[Function]}
+      type="submit"
+    >
+      OK
+    </button>
+  </div>
+  <div
+    className="zone2"
+  >
+    <ul
+      id="tags"
+    />
+  </div>
+  <button
+    aria-label={null}
+    className="btn btn-secondary"
+    id="btn-search-tag"
+    onClick={[Function]}
+    type="search"
+  >
+    Search
+  </button>
+  <div
+    className="zone3"
+  >
+    <table
+      className="products-table"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref #
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            City
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Update
+          </th>
+          <th>
+            Delete
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th
+            scope="row"
+          >
+            <input
+              className="table-input form-control"
+              id="prodRef"
+              name="prodRef"
+              onChange={[Function]}
+              placeholder="Ref product"
+              type="text"
+              value=""
+            />
+          </th>
+          <td>
+            <input
+              className="table-input form-control"
+              id="prodName"
+              name="prodName"
+              onChange={[Function]}
+              placeholder="Name"
+              type="text"
+              value=""
+            />
+          </td>
+          <td>
+            <input
+              className="table-input form-control"
+              id="prodCity"
+              name="prodCity"
+              onChange={[Function]}
+              placeholder="City"
+              type="text"
+              value=""
+            />
+          </td>
+          <td>
+            <input
+              className="table-input form-control"
+              id="prodPrice"
+              name="prodPrice"
+              onChange={[Function]}
+              placeholder="Price"
+              type="number"
+              value=""
+            />
+          </td>
+          <td>
+            <button
+              aria-label={null}
+              className="btn btn-secondary"
+              onClick={[Function]}
+              type="button"
+            >
+              Add
+            </button>
+          </td>
+          <td>
+            <button
+              aria-label={null}
+              className="btn btn-secondary"
+              onClick={[Function]}
+              type="button"
+            >
+              MAJ
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="zone4"
+  >
+    <p>
+      
+    </p>
+  </div>
+</div>
+`;
